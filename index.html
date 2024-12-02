@@ -75,18 +75,17 @@
   <script>
     // Search
     function searchGoogle(event) {
-      event.preventDefault(); // Prevents the default form submission
+      event.preventDefault();
         
       const searchQuery = document.getElementById("searchInput").value;
-        
-      // Redirects to Google search with the search query
+      
       if (searchQuery) {
         const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
         window.location.href = googleSearchUrl;
       }
     }
 
-    // Time Widget
+    // Time
     function updateTime() {
       const now = new Date();
       const timeWidget = document.getElementById("timeWidget");
@@ -95,7 +94,6 @@
     setInterval(updateTime, 1000);
     updateTime();
 
-    // Modal Functionality
     function setupModal(boxId, modalId) {
       const box = document.getElementById(boxId);
       const modal = document.getElementById(modalId);
@@ -111,7 +109,6 @@
       });
     }
 
-    // Initialize Modals
     setupModal("microsoftOfficeBox", "microsoftOfficeModal");
     setupModal("googleOfficeBox", "googleOfficeModal");
   </script>
