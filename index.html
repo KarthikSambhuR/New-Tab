@@ -15,7 +15,7 @@
     <div class="search-bar">
       <form id="searchForm" onsubmit="searchGoogle(event)">
         <input type="text" id="searchInput" placeholder="Search" />
-        <a class="searchButton" type="submit">Search</a>
+        <button class="searchButton" type="submit">Search</button>
       </form>
     </div>
     
@@ -75,17 +75,18 @@
   <script>
     // Search
     function searchGoogle(event) {
-      event.preventDefault();
+      event.preventDefault(); // Prevents the default form submission
         
       const searchQuery = document.getElementById("searchInput").value;
-      
+        
+      // Redirects to Google search with the search query
       if (searchQuery) {
         const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
         window.location.href = googleSearchUrl;
       }
     }
 
-    // Time
+    // Time Widget
     function updateTime() {
       const now = new Date();
       const timeWidget = document.getElementById("timeWidget");
@@ -94,6 +95,7 @@
     setInterval(updateTime, 1000);
     updateTime();
 
+    // Modal Functionality
     function setupModal(boxId, modalId) {
       const box = document.getElementById(boxId);
       const modal = document.getElementById(modalId);
@@ -109,6 +111,7 @@
       });
     }
 
+    // Initialize Modals
     setupModal("microsoftOfficeBox", "microsoftOfficeModal");
     setupModal("googleOfficeBox", "googleOfficeModal");
   </script>
