@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Welcome To, <span style="color: #42ca88">New Tab</span></h1>
+      <div class="time-widget" id="timeWidget"></div>
+    </header>
+    <div class="search-bar">
+      <form id="searchForm" onsubmit="searchGoogle(event)">
+        <input type="text" id="searchInput" placeholder="Search" />
+        <a class="searchButton" type="submit">Search</a>
+      </form>
+    </div>
+    
+    <div class="grid">
+        <a href="https://mail.google.com" class="service-box"><img src="assets/gmail.png" alt="Gmail"></a>
+        <a href="https://chatgpt.com" class="service-box"><img src="assets/chatgpt.png" alt="ChatGPT"></a>
+        <a href="https://web.whatsapp.com/" class="service-box"><img src="assets/whatsapp.webp" alt="Whatsapp"></a>
+        <a href="https://www.github.com/" class="service-box"><img src="assets/github.png" alt="Github"></a>
+        <a href="https://idx.google.com/" class="service-box"><img src="assets/idx.png" alt="IDX"></a>
+        <a href="https://linkedin.com/" class="service-box"><img src="assets/linkedin.png" alt="LinkedIn"></a>
+        <a href="https://www.figma.com/" class="service-box"><img src="assets/figma.png" alt="Figma"></a>
+        <a href="https://dash.cloudflare.com/" class="service-box"><img src="assets/cloudflare.png" alt="Cloudflare"></a>
+        <a href="https://console.firebase.google.com/" class="service-box"><img src="assets/firebase.png" alt="Firebase"></a>
+        <a href="https://youtube.com" class="service-box"><img src="assets/youtube.png" alt="YouTube"></a>
+        <a href="https://photos.google.com" class="service-box"><img src="assets/googlephotos.png" alt="Google Photos"></a>
+        <a href="https://web.telegram.org/" class="service-box"><img src="assets/telegram.png" alt="Telegram"></a>
+        <a href="https://discord.com/channels/@me" class="service-box"><img src="assets/discord.png" alt="Discord"></a>
+        <a href="https://www.photopea.com/" class="service-box"><img src="assets/photoshop.png" alt="Photopea"></a>
+        <a class="service-box" id="googleOfficeBox"><img src="assets/googleoffice.webp" alt="Google Office"></a>
+        <a class="service-box" id="microsoftOfficeBox"><img src="assets/msoffice.png" alt="Microsoft Office"></a>
+        <a href="https://teams.microsoft.com/" class="service-box"><img src="assets/msteams.webp" alt="Microsoft Teams"></a>
+        <a href="https://www.zoom.com/" class="service-box"><img src="assets/zoom.webp" alt="Zoom"></a>
+        <a href="https://meet.google.com/" class="service-box"><img src="assets/gmeet.webp" alt="Google Meet"></a>
+        <a href="https://web.postman.co/home/" class="service-box"><img src="assets/postman.png" alt="Postman"></a>
+        <a href="https://www.canva.com/" class="service-box"><img src="assets/canva.webp" alt="Canva"></a>
+        <a href="https://console.cloud.google.com/" class="service-box"><img src="assets/googlecloud.png" alt="Google Cloud"></a>
+        <a href="https://portal.azure.com/" class="service-box"><img src="assets/azure.png" alt="Azure"></a>
+        <a href="https://aws.amazon.com/console/" class="service-box"><img src="assets/aws.png" alt="AWS"></a>
+        <a href="https://gemini.google.com/app" class="service-box"><img src="assets/gemini.webp" alt="Gemini"></a>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal" id="microsoftOfficeModal">
+    <div class="modal-content">
+      <h3>Microsoft Office Options</h3>
+      <div class="grid">
+        <a class="service-box" href="https://www.office.com/launch/Word/"><img src="assets/word.png" alt="Word"></a>
+        <a class="service-box" href="https://www.office.com/launch/Excel/"><img src="assets/excel.png" alt="Excel"></a>
+        <a class="service-box" href="https://www.office.com/launch/PowerPoint/"><img src="assets/powerpoint.webp" alt="Powerpoint"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="googleOfficeModal">
+    <div class="modal-content">
+      <h3>Google Office Options</h3>
+      <div class="grid">
+        <a class="service-box" href="https://docs.google.com"><img src="assets/docs.png" alt="Google Docs"></a>
+        <a class="service-box" href="https://sheets.google.com"><img src="assets/sheets.png" alt="Google Sheets"></a>
+        <a class="service-box" href="https://slides.google.com"><img src="assets/slides.png" alt="Google Slides"></a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Search
+    function searchGoogle(event) {
+      event.preventDefault();
+        
+      const searchQuery = document.getElementById("searchInput").value;
+      
+      if (searchQuery) {
+        const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+        window.location.href = googleSearchUrl;
+      }
+    }
+
+    // Time
+    function updateTime() {
+      const now = new Date();
+      const timeWidget = document.getElementById("timeWidget");
+      timeWidget.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true});
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+
+    function setupModal(boxId, modalId) {
+      const box = document.getElementById(boxId);
+      const modal = document.getElementById(modalId);
+
+      box.addEventListener("click", () => {
+        modal.classList.add("active");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+        }
+      });
+    }
+
+    setupModal("microsoftOfficeBox", "microsoftOfficeModal");
+    setupModal("googleOfficeBox", "googleOfficeModal");
+  </script>
+</body>
+</html>
