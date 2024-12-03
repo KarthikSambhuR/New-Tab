@@ -36,7 +36,7 @@ header {
     width: 100%;
     max-width: 500px;
     padding: 10px;
-    border: 3px solid #efefef;
+    border: 3px solid #30477a;
     border-radius: 50px;
     background-color: #000;
 }
@@ -48,7 +48,7 @@ header {
 .service-box {
     background-color: #000;
     padding: 15px;
-    border: 3px solid #efefef;
+    border: 3px solid #30477a;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -115,7 +115,7 @@ header {
     text-decoration: none;
     background-color: #000; 
     color: #efefef;
-    border: 3px solid #28cf84;
+    border: 3px solid #35b37b;
     cursor: pointer;
     border-radius: 50px;
 }
